@@ -1,12 +1,10 @@
 const express = require("express");
+const addDays=require("date-fns/addDays");
 const app = express();
 app.get("/", (request, response) => {
-  let date = new Date();
-  let dd = date.getDate();
-  let mm = date.getMonth();
-  let yyyy = date.getFullYear();
-  let result = `${dd}-${mm}-${yyyy}`;
-  response.send(result);
+  const output=new Date();
+  const result=addDays(new Date(output.getFullYear(),output.getMonth(),output.getDate()),100);
+  response.send(`${result}`);
 });
 
 module.exports = app;
